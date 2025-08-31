@@ -1,0 +1,13 @@
+version: 1.0  # spec version
+runtime: python3
+build:
+  commands:
+    build:
+      - pip install -r requirements.txt  # install dependencies
+env:
+  - name: PORT
+    value: '8000'
+run:
+  command: python app.py  # command to start FastAPI
+network:
+  port: 8000            # port App Runner exposes
