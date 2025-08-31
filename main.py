@@ -14,6 +14,12 @@ def get_db():
     finally:
         db.close()
 
+
+# home page
+@app.get('/')
+def home_page():
+    return "this is homepage of user management. Please append /docs to URL to know more"
+
 # Create user
 @app.post('/users/', response_model=schemas.User)
 def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
