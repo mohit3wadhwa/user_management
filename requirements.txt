@@ -3,3 +3,4 @@ uvicorn
 SQLAlchemy
 pydantic
 requests
+urllib3<2
