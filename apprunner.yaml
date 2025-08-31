@@ -6,3 +6,8 @@ build:
       - pip install -r requirements.txt  # install dependencies
 run:
   command: python main.py  # command to start FastAPI
+secrets:
+  - name: bot_token
+    value_from: arn:aws:secretsmanager:ap-south-1:122610490811:secret:user_management_keys-cH230k
+  - name: chat_id
+    value_from: arn:aws:secretsmanager:ap-south-1:122610490811:secret:user_management_keys-cH230k
