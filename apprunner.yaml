@@ -6,5 +6,3 @@ build:
       - pip install -r requirements.txt  # install dependencies
 run:
   command: python main.py  # command to start FastAPI
-network:
-  port: 8000            # port App Runner exposes
